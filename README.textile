@@ -11,10 +11,10 @@ Status:
 * Supports manuals, which consist of chapters.
 
 Todo:
-* Authenticaition
+* Authentication
 * Papertrail integration for monitoring edit history
-* 
-
+* Paperclip integration for images & downloads associated with manuals
+* FAQ support
 
 h2. Uses:
 
