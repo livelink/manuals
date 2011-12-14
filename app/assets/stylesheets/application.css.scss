@@ -1,0 +1,185 @@
+/*
+ * This is a manifest file that'll automatically include all the stylesheets available in this directory
+ * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at
+ * the top of the compiled file, but it's generally better to create a new file per style scope.
+ *= require foundation
+ *= require_tree . 
+ *= require_self
+*/
+
+#bottomBar {
+	background: #eee;
+	padding: 1em 0 5em;
+	border-top: 1px solid #ccc;
+	margin-top: 1em;
+}
+
+#topBar {
+	background: black;
+	color: white;
+	border-bottom: 4px solid #f90;
+	padding: 1em;
+
+	H1 {
+		color: white;
+		font-size: inherit;
+		margin: 0;
+
+		A {
+			color: inherit;
+			&:hover {
+				color: #f90;
+			}
+		}
+	}
+}
+
+#head {
+	background: #def;
+	border-bottom: 1px solid #acf;
+	padding-top: 1em;
+	h1 {
+		color: #014;
+		text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.8);
+		margin-top: 1em;
+	}
+}
+
+#content {
+	padding-top: 1em;
+}
+
+textarea, pre, .cheatsheet, code, #chapter_editor {
+	font-family: Inconsolata, Consolata, monospace;
+}
+
+.cheatsheet {
+	display: block;
+	background: #eee;
+	padding: 0.5em;
+	border: 1px solid #ccc;
+	height: 100%;
+}
+
+#chapter_editor {
+	width: 638px;
+	height: 400px;
+	position: relative;
+	.ace_scroller {
+		// Looks ugly...?
+		overflow-x: hidden;
+	}
+}
+#chapter_content {
+	position: absolute;
+	left: -1000px;
+	width: 400px;
+}
+
+.contents-list {
+	background: #eee;
+	border: 1px solid #ccc;
+	padding: 1em;
+	box-shadow: 3px 3px 4px rgba(0,0,0,0.3);
+	position: fixed;
+	UL {
+
+	}
+}
+
+.edit-link {
+	text-align: right;
+}
+
+.right {
+	width: 300px;
+	float:right;
+}
+
+TEXTAREA.max-width {
+	width: 100%;
+}
+
+.textile-ref-tabs {
+	max-height: 400px;
+	overflow-y: auto;
+}
+
+
+.chapter-list {
+	&, .section-list {
+	margin-left: 1em;
+	margin-bottom: 0;
+	}
+
+	list-style: decimal outside;
+	LI {
+		margin-bottom: 0;
+	}
+}
+
+.textile {
+	H3 {
+		margin-top: 1em;
+	}
+
+	UL {
+		margin-left: 20px;
+		list-style: circle outside;
+	}
+	UL LI {
+		
+	}
+	blockquote.note {
+		margin-left: 2em;
+		border-left: 2px solid #9cf;
+		background-color: #def;
+		padding: 1em 1em 1em 48px;
+		background-image: url(/images/information.png);
+		background-position: 16px 50%;
+		background-repeat: no-repeat;
+	}
+	blockquote p:last-child {
+		margin-bottom: 0;
+	}
+
+	PRE {
+		background: #eee;
+		border: 1px dashed #ccc;
+	}
+	PRE BR {
+		display: none;
+	}
+	CODE, PRE {
+		font-family: Inconsolata, Consolata, monospace;
+	}
+
+
+	LI {
+		margin-bottom: 0;
+	}
+
+	LI.dir, LI.file {
+		padding-left: 20px;
+		background-position: 0% 6px;
+		background-repeat: no-repeat;
+		line-height: 24px;
+	}
+	LI.dir {
+		background-image: url(/images/folder.png);
+	}
+	LI.file {
+		background-image: url(/images/page_white.png);
+	}	
+
+	SUP {
+		font-size: 70%;
+		vertical-align: super;
+		line-height: 0;
+	}
+	SUB {
+		font-size: 70%;
+		vertical-align: sub;
+		line-height: 0;
+	}
+}

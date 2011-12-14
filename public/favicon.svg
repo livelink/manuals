@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="48"
+   height="48"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.48+devel r"
+   sodipodi:docname="favicon.svg"
+   inkscape:export-filename="/home/geoff/Projects/manuals/public/favicon.png"
+   inkscape:export-xdpi="90"
+   inkscape:export-ydpi="90">
+  <defs
+     id="defs4">
+    <filter
+       inkscape:collect="always"
+       id="filter3971">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="0.782"
+         id="feGaussianBlur3973" />
+    </filter>
+    <filter
+       inkscape:collect="always"
+       id="filter4019">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="0.59782518"
+         id="feGaussianBlur4021" />
+    </filter>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="11.2"
+     inkscape:cx="53.504231"
+     inkscape:cy="16.620292"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     width="0px"
+     height="0px"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     borderlayer="true"
+     inkscape:snap-global="true"
+     inkscape:window-width="1920"
+     inkscape:window-height="1146"
+     inkscape:window-x="1920"
+     inkscape:window-y="26"
+     inkscape:window-maximized="1"
+     inkscape:snap-page="true">
+    <inkscape:grid
+       type="xygrid"
+       id="grid19"
+       empspacing="5"
+       visible="true"
+       enabled="true"
+       snapvisiblegridlinesonly="true"
+       spacingx="0.5px"
+       spacingy="0.5px" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-1004.3622)">
+    <rect
+       transform="translate(0,1004.3622)"
+       ry="3"
+       y="2.5"
+       x="5.5"
+       height="43"
+       width="37"
+       id="rect3135"
+       style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:3;opacity:0.58333333;filter:url(#filter3971)" />
+    <rect
+       style="fill:#ff0066;fill-opacity:1;stroke:#ff80b2"
+       id="rect21"
+       width="37"
+       height="43"
+       x="5.5"
+       y="2.5"
+       ry="3"
+       transform="translate(0,1004.3622)" />
+    <text
+       sodipodi:linespacing="125%"
+       id="text3975"
+       y="1019.6682"
+       x="23.595221"
+       style="font-size:10.11605358px;font-style:normal;font-weight:bold;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#2b0011;fill-opacity:1;stroke:#2b0011;stroke-width:1.5;filter:url(#filter4019);font-family:Sans;-inkscape-font-specification:Sans Bold"
+       xml:space="preserve"><tspan
+         id="tspan3977"
+         y="1019.6682"
+         x="23.595221"
+         sodipodi:role="line">HOW</tspan><tspan
+         id="tspan3979"
+         y="1032.3132"
+         x="23.595221"
+         sodipodi:role="line">DO</tspan><tspan
+         id="tspan3981"
+         y="1044.9584"
+         x="23.595221"
+         sodipodi:role="line">I...?</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:10.11605358px;font-style:normal;font-weight:bold;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#ffd5e5;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans Bold"
+       x="23.461292"
+       y="1019.4006"
+       id="text3119"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         x="23.461292"
+         y="1019.4006"
+         id="tspan3923">HOW</tspan><tspan
+         sodipodi:role="line"
+         x="23.461292"
+         y="1032.0457"
+         id="tspan3927">DO</tspan><tspan
+         sodipodi:role="line"
+         x="23.461292"
+         y="1044.6907"
+         id="tspan3929">I...?</tspan></text>
+  </g>
+</svg>

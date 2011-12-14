@@ -1,0 +1,40 @@
+#head.container
+	.row
+		.ten.columns
+			%h1= @manual.title
+		.two.columns
+			= link_to 'Edit', edit_manual_path(@manual)
+
+#content.container
+	- if notice
+		.row
+			.twelve.columns
+				.alert-box.success
+					= notice
+					%a.close(href) ×
+	.row
+		.eight.columns
+			%dl
+				%h4.subheader= @manual.summary	
+				%div
+					%span.inline for
+					= @manual.audience
+			- for chapter in @manual.chapters
+				%hr
+				%a{'name'=> chapter.chapter_no}
+				%h2{:id => chapter.chapter_no }= "#{chapter.chapter_no}. #{chapter.title}"
+				= textile(chapter.content)
+				.edit-link
+					= link_to "[Edit]", edit_manual_chapter_path(@manual, chapter)
+
+		.four.columns
+			.contents-list
+				%h3 Contents
+				%ul.chapter-list
+					- for chapter in @manual.chapters
+						%li= link_to chapter.title, :anchor => chapter.chapter_no
+						- unless chapter.h3s.empty?
+							%ul.section-list
+								- for head in chapter.h3s; next if head[:level] != 'h3'
+									%li= link_to head[:title], :anchor => head[:id]
+						

@@ -1,0 +1,11 @@
+#head.container
+	.row
+		.columns.twelve
+			%h1
+				New chapter for
+				= @manual.title
+.container
+	.row
+		.columns.twelve
+			= render 'form'
+			= link_to 'Back', manual_chapters_path(@manual)

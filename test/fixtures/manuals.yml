@@ -1,0 +1,29 @@
+# == Schema Information
+#
+# Table name: manuals
+#
+#  id         :integer(4)      not null, primary key
+#  slug       :string(255)
+#  title      :string(255)
+#  summary    :text
+#  audience   :text
+#  visibility :string(255)
+#  created_at :datetime
+#  updated_at :datetime
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  slug: MyString
+  title: MyString
+  summary: MyText
+  audience: MyText
+  visibility: MyString
+
+two:
+  slug: MyString
+  title: MyString
+  summary: MyText
+  audience: MyText
+  visibility: MyString

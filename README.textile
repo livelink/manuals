@@ -1,0 +1,27 @@
+h1. LiveLink Manuals
+
+A Rails 3.1 based knowledge base website, for maintaining manuals and FAQs 
+in a sane format online.  It will rely on an OAuth2 provider, such as google for secure authentication without password/account proliferation.
+
+It uses "Textile":http://redcloth.org/textile/ for documentation and allows inline diagrams using "ditaa":http://ditaa.sourceforge.net.
+
+Basic styling is based on "Foundation":http://foundation.zurb.com by Zurb.
+
+Status:
+* Supports manuals, which consist of chapters.
+
+Todo:
+* Authenticaition
+* Papertrail integration for monitoring edit history
+* 
+
+
+h2. Uses:
+
+* Rails 3.1 (+jQuery,SASS,CoffeeScript)
+* ACE Editor (for textile editing)
+* SyntaxHighlighter (for display code highlighting)
+* Foundation (for CSS)
+* FamFamFam Silk Icons
+
+

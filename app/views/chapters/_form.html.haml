@@ -1,0 +1,36 @@
+.row
+  .eight.columns
+    = form_for [@manual,@chapter], :html => { :class => 'nice custom' } do |f|
+      -if @chapter.errors.any?
+        #error_explanation
+          %h2= "#{pluralize(@chapter.errors.count, "error")} prohibited this chapter from being saved:"
+          %ul
+            - @chapter.errors.full_messages.each do |msg|
+              %li= msg
+      .row
+        .nine.columns
+          .field
+            = f.label :title
+            = f.text_field :title, :class => 'input-text large'
+    
+        .three.columns
+          .field
+            = f.label :chapter_no
+            = f.text_field :chapter_no, :type => 'number', :class => 'input-text small'
+    
+      .field
+        = f.label :content
+        = f.text_area :content, :class => 'max-width', :rows => 30
+        #chapter_editor
+      %script
+        :plain
+          jQuery(window).load(initChapterEditor);
+    
+      .actions
+        = f.submit 'Save', :class => 'nice medium radius blue button'
+        %button(id="preview" class="nice medium radius white button")
+          Preview
+  .four.columns
+    %h2 Quick Ref 
+    = textile_help
+

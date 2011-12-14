@@ -1,0 +1,14 @@
+#head.container
+	.row
+		.ten.columns
+			%h1= @manual.title
+			%h2= @chapter.title
+		.two.columns
+			= link_to 'Edit', edit_manual_chapter_path(@manual, @chapter)
+
+.container
+	.row
+		.twelve.columns
+			%p#notice= notice
+			= textile(@chapter.content)
+

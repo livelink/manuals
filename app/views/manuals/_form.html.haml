@@ -1,0 +1,24 @@
+= form_for(@manual, :html => { :class => 'nice custom' }) do |f|
+  - if @manual.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@manual.errors.count, "error")} prohibited this manual from being saved:"
+      %ul
+        - @manual.errors.full_messages.each do |msg|
+          %li= msg
+  .field
+    = f.label :slug
+    = f.text_field :slug, :class => 'input-text'
+  .field
+    = f.label :title
+    = f.text_field :title, :class => 'input-text'
+  .field
+    = f.label :summary
+    = f.text_area :summary, :rows => 5
+  .field
+    = f.label :audience
+    = f.text_area :audience, :rows => 3
+  .field
+    = f.label :visibility
+    = f.select :visibility, ['Internal', 'Partners', 'Clients', 'Public'], :class => 'custom'
+  .actions
+    = f.submit :class => 'nice medium radius blue button'
