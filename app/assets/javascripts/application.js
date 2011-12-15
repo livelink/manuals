@@ -62,14 +62,17 @@ function initChapterEditor() {
 		})
 	});
 
-	$(window).on('hashchange', function () {
-		if (location.hash == '#preview') {
-			var url = location.pathname.replace(/edit$/, 'preview');
+	$(window).on('click', 'DL.tabs a', function (e) {
+		if ($(this).attr('href') == '#preview') {
+			var url = location.pathname.replace(/(edit|new)$/, 'preview');
 			var pp = $("#previewPane");
 			pp.html("Loading preview...");
 			$.post(url, { 'data' : textarea.val() }, function (data) {
 				pp.html(data);
 			});
+		} else if ($(this).attr('href') == '#source') {
+			setTimeout(function () { editor.focus(); }, 0);
 		}
+		e.preventDefault();
 	});
 }
