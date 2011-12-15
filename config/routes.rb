@@ -8,6 +8,9 @@ Manuals::Application.routes.draw do
 		member do
 			post 'preview'
 		end
+		collection do
+			post 'preview'
+		end
 	end
   end
 

@@ -1,4 +1,17 @@
 module ApplicationHelper
+	def logged_in?
+		session['auth'].try(:[], 'info').try(:[], 'email').to_s =~ /@livelinktechnology[.]net$/
+	end
+	def can_edit?
+		logged_in?
+	end
+	def can_create?
+		can_edit?
+	end
+	def can_delete?
+		logged_in? and
+			%w[g.youngs@livelinktechnology.net].include? session['auth'].try(:[], 'info').try(:[], 'email')
+	end
 	def textile str
 		doc = Nokogiri.HTML(RedCloth.new(str).to_html)
 		doc.encoding = "UTF-8"

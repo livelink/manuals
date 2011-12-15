@@ -6,15 +6,18 @@
 #content.container
 	.row
 		.twelve.columns
-			- @manuals.each do |manual| 
+			- @manuals.each do |manual|
 				.right
-					= link_to 'Edit', edit_manual_path(manual), :class => 'nice small radius black button'
-					= link_to 'Destroy', manual, :confirm => 'Are you sure?', :method => :delete, :class => 'nice small radius red button'
+					- if can_edit?
+						= link_to 'Edit', edit_manual_path(manual), :class => 'nice small radius black button'
+					- if can_delete?
+						= link_to 'Destroy', manual, :confirm => 'Are you sure?', :method => :delete, :class => 'nice small radius red button'
 					= link_to 'Show', manual, :class => 'nice small radius white button'
 
-				%h2= manual.title 
-				%blockquote= manual.summary 
+				%h2= manual.title
+				%blockquote= manual.summary
 				%p= "for: "+manual.audience
-				%hr 
- 
-			= link_to 'New Manual', new_manual_path, :class => 'nice medium radius blue button' 
+				%hr
+
+			- if can_create?
+				= link_to 'New Manual', new_manual_path, :class => 'nice medium radius blue button'
