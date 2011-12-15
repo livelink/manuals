@@ -7,6 +7,7 @@ gem 'rails', '3.1.3'
 
 gem 'omniauth', '~> 1.0.0'
 gem 'omniauth-openid'
+gem 'omniauth-google-oauth2'
 gem 'mysql2'
 
 gem 'nokogiri'
