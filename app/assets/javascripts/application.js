@@ -22,6 +22,12 @@ jQuery(function ($) {
 	SyntaxHighlighter.all()
 });
 
+jQuery(function ($) {
+	$(document).on('click', '#auth-info', function () {
+		$(this).toggleClass('open');
+	});
+});
+
 function initChapterEditor() {
 	var editor = window.aceEditor = ace.edit("chapter_editor");
 	var textarea = $('textarea#chapter_content').hide();

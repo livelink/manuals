@@ -7,18 +7,26 @@
  *= require_self
 */
 
+/* Foundation/Zurb related customisations */
+body {
+	background: #eee;
+}
+
 #bottomBar {
 	background: #eee;
 	padding: 1em 0 5em;
 	border-top: 1px solid #ccc;
-	margin-top: 1em;
 }
 
 #topBar {
 	background: black;
 	color: white;
 	border-bottom: 4px solid #f90;
-	padding: 1em;
+	padding: 0 10px;
+	
+	h1 {
+		padding: 10px 0;
+	}
 
 	H1 {
 		color: white;
@@ -46,11 +54,62 @@
 }
 
 #content {
-	padding-top: 1em;
+	padding: 1em 1em 3em 1em;
+	background: white;
+}
+
+.row {
+	max-width: 1200px;
+}
+
+/* End of Foundation/Zurb related bits */
+
+#auth-info {
+	background: transparent;
+	position: relative;
+	text-align: right;
+	padding: 10px;
+	#name {
+		cursor: pointer;
+	}
+	.auth-info-name {
+		font-weight: bold;
+	}
+
+	#logout {
+		position: absolute;
+		box-shadow: 2px 2px 5px rgba(0,0,0,0.6);
+		background: #fff;
+		color: #333;
+		display: none;
+		padding: 20px;
+		text-align: left;
+		top: 100%;
+		z-index: 40;
+		right: 0;
+		width: 300px;
+		max-width: 400px;
+		a {
+			font-weight: bold;
+			color: inherit;
+		}
+		ul, li {
+			margin: 0;
+		}
+	}
+	
+	&.open {
+		/*height: 100px;*/
+		background: #333;
+	}
+	&.open #logout {
+		display: block;
+	}
 }
 
 textarea, pre, .cheatsheet, code, #chapter_editor {
 	font-family: Inconsolata, Consolata, monospace;
+	font-size: 11pt;
 }
 
 .cheatsheet {
@@ -62,7 +121,7 @@ textarea, pre, .cheatsheet, code, #chapter_editor {
 }
 
 #chapter_editor {
-	width: 638px;
+	//width: 638px;
 	height: 400px;
 	position: relative;
 	.ace_scroller {
@@ -73,7 +132,8 @@ textarea, pre, .cheatsheet, code, #chapter_editor {
 #chapter_content {
 	position: absolute;
 	left: -1000px;
-	width: 400px;
+	//width: 400px;
+	width: 100%;
 }
 
 .contents-list {
@@ -92,8 +152,9 @@ textarea, pre, .cheatsheet, code, #chapter_editor {
 }
 
 .right {
-	width: 300px;
+	/*width: 300px;*/
 	float:right;
+	text-align: right;
 }
 
 TEXTAREA.max-width {
