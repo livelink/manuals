@@ -12,6 +12,7 @@ class ChaptersController < ApplicationController
   end
 
   def preview
+	render :layout => false
   end
 
   # GET /chapters/1

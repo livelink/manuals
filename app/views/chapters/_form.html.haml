@@ -18,18 +18,23 @@
             = f.label :chapter_no
             = f.text_field :chapter_no, :type => 'number', :class => 'input-text small'
     
-      .field
-        = f.label :content
-        = f.text_area :content, :class => 'max-width', :rows => 30
-        #chapter_editor
+      %dl.tabs.contained
+        %dd
+          %a.active(href="#source") Source
+        %dd
+          %a(href="#preview") Preview
+      %ul.tabs-content.contained
+        %li.active#sourceTab
+          = f.text_area :content, :class => 'max-width', :rows => 30
+          #chapter_editor
+        %li#previewTab
+          #previewPane
       %script
         :plain
           jQuery(window).load(initChapterEditor);
     
       .actions
         = f.submit 'Save', :class => 'nice medium radius blue button'
-        %button(id="preview" class="nice medium radius white button")
-          Preview
   .four.columns
     %h2 Quick Ref 
     = textile_help

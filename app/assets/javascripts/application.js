@@ -12,6 +12,8 @@
 //= require ace
 //= require mode-textile.js
 //= require theme-textmate.js
+//= require theme-eclipse.js
+//= require theme-vibrant_ink.js
 
 // Fix Textile mutilation of pre blocks
 jQuery(function ($) {
@@ -29,6 +31,7 @@ jQuery(function ($) {
 });
 
 function initChapterEditor() {
+	$("#chapter_editor").width(($("#chapter_content").width()-40)+"px");
 	var editor = window.aceEditor = ace.edit("chapter_editor");
 	var textarea = $('textarea#chapter_content').hide();
 	var TextileMode = require("ace/mode/textile").Mode;
@@ -39,15 +42,34 @@ function initChapterEditor() {
 	session.setMode(new TextileMode());
 	session.setValue(textarea.val());
 	session.on('change', function(){ textarea.val(editor.getSession().getValue()); });
-	require('pilot/canon').addCommand({
-    name: 'myCommand',
-    bindKey: {
-        win: 'Ctrl-B',
-        mac: 'Command-B',
-        sender: 'editor'
-    },
-    exec: function(env, args, request) {
-        editor.insert("*"+session.doc.getTextRange(editor.getSelectionRange())+"*");
-    }
-})
+
+	var canon = require('pilot/canon');
+	$.each([
+		{name: 'make-bold', key: 'B', left: '*', right: '*'},
+		{name: 'make-italic', key: 'I', left: '_', right: '_'},
+		{name: 'make-strikeout', key: 'D', left: '-', right: '-'},
+	], function (index, cmd) {
+		canon.addCommand({
+			name: cmd.name,
+			bindKey: {
+				win: 'Ctrl-'+cmd.key,
+				mac: 'Command-'+cmd.key,
+				sender: 'editor'
+			},
+			exec: function(env, args, request) {
+				editor.insert(cmd.left+session.doc.getTextRange(editor.getSelectionRange())+cmd.right);
+			}
+		})
+	});
+
+	$(window).on('hashchange', function () {
+		if (location.hash == '#preview') {
+			var url = location.pathname.replace(/edit$/, 'preview');
+			var pp = $("#previewPane");
+			pp.html("Loading preview...");
+			$.post(url, { 'data' : textarea.val() }, function (data) {
+				pp.html(data);
+			});
+		}
+	});
 }
