@@ -1,7 +1,11 @@
 Manuals::Application.routes.draw do
+  get "sessions/create"
+  match '/auth/:provider/callback', :to => 'sessions#create'
+  match '/auth/goodbye', :to => 'sessions#destroy'
+
   resources :manuals do
 	resources :chapters do
-		collection do
+		member do
 			post 'preview'
 		end
 	end
