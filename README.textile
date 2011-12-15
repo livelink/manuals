@@ -7,10 +7,11 @@ It uses "Textile":http://redcloth.org/textile/ for documentation and allows inli
 Basic styling is based on "Foundation":http://foundation.zurb.com by "Zurb":http://zurb.com.
 
 Status:
-* Supports manuals, which consist of chapters.
+* Supports manuals, which consist of chapters
+* Initial login/logout via Google's OpenID service
 
 Todo:
-* Authentication
+* Authentication lockdown (basic auth working, but no permission checks)
 * Papertrail integration for monitoring edit history
 * Paperclip integration for images & downloads associated with manuals
 * FAQ support
@@ -18,7 +19,8 @@ Todo:
 h2. Uses:
 
 * Rails 3.1 (+jQuery,SASS,CoffeeScript)
-* Omniauth (for OAuth2 authentication)
+* Omniauth (for OpenID authentication)
+* Gravatar (for user profile pics)
 * ACE Editor (for textile editing)
 * SyntaxHighlighter (for display code highlighting)
 * Foundation (for CSS)
