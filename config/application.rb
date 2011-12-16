@@ -48,3 +48,6 @@ module Manuals
     config.assets.version = '1.0'
   end
 end
+
+Mime::Type.register 'application/pdf', :pdf
+

@@ -3,7 +3,8 @@
 		.ten.columns
 			%h1= @manual.title
 		.two.columns
-			= link_to 'Edit', edit_manual_path(@manual)
+			= link_to 'Edit', edit_manual_path(@manual), :class => 'edit-link'
+			= link_to 'PDF', manual_path(@manual, :format => 'pdf'), :class => 'pdf-link'
 
 #content.container
 	- if notice
@@ -14,18 +15,18 @@
 					%a.close(href) ×
 	.row
 		.eight.columns
-			%dl
-				%h4.subheader= @manual.summary	
+			.summary
+				%h4.subheader= @manual.summary
 				%div
 					%span.inline for
 					= @manual.audience
 			- for chapter in @manual.chapters
-				%hr
+				%hr.chapter-break{:class => "chapter-#{chapter.chapter_no}"}
 				%a{'name'=> chapter.chapter_no}
 				%h2{:id => chapter.chapter_no }= "#{chapter.chapter_no}. #{chapter.title}"
 				= textile(chapter.content)
 				.edit-link
-					= link_to "[Edit]", edit_manual_chapter_path(@manual, chapter)
+					= link_to "[Edit]", edit_manual_chapter_path(@manual, chapter), :class => 'edit-link'
 
 		.four.columns
 			.contents-list

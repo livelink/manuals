@@ -21,7 +21,51 @@ class ManualsController < ApplicationController
 	raise ActiveRecord::RecordNotFound, "No record found for ID=#{params[:id]}" unless @manual
 
     respond_to do |format|
-      format.html # show.html.erb
+      format.html do
+        # show.html.erb
+        if params[:print]
+           render :layout => 'print'
+        end
+      end
+      format.pdf {
+        File.open(cover=Rails.root.join("tmp/#{@manual.id}.html"), "w") do |fp|
+		  fp << <<-EOS
+<html>
+<head>
+<style>
+H1 {
+	font-size: 36pt;
+	margin: 120pt 30pt 0 30pt;
+	font-family: Arial;
+	text-align: center;
+}
+blockquote {
+	margin: 5pt 30pt 0 30pt;
+	font-size: 18pt;
+	font-family: Arial;
+	text-align: center;
+	padding: 0;
+}
+</style>
+</head>
+<body>
+<h1>#{@manual.title}</h1>
+<blockquote>#{CGI.escapeHTML @manual.summary}</blockquote>
+</body>
+</html>
+EOS
+        end
+        system(Rails.root.join("bin", "wkhtmltopdf-amd64"),
+				'--header-center', @manual.title,
+				'--header-line',
+				'--javascript-delay', '800',
+				'--outline-depth', '3',
+				'cover', cover,
+				'toc', '--xsl-style-sheet', Rails.root.join('data', 'toc.xslt'), 
+				url_for(:print => 'yes'),
+				out=Rails.root.join("public", "#{@manual.to_param}.pdf"))
+         send_file out, :disposition => 'attachment'
+      }
       format.json { render :json => @manual }
     end
   end
