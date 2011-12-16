@@ -16,6 +16,26 @@ module ApplicationHelper
 		doc = Nokogiri.HTML(RedCloth.new(str).to_html)
 		doc.encoding = "UTF-8"
 
+		# Make plain images pretty
+		doc.css('img').each do |img|
+			unless img['width'] && img['height']
+				path = Rails.root.join('public').to_s + (img['src']).to_s.sub(/[?].*$/,'')
+				info = Paperclip::Geometry.from_file(path)
+				img['width'] = info.width.to_s
+				img['height'] = info.height.to_s
+			end
+			
+			if params[:print]
+				# Switch to large URL?
+				img['src'] = img['src'].sub(%r'(\d)\/normal', '\1/print')
+			end
+			if img.parent.elements.size == 1
+				img.parent['class'] = "illustration-container"
+			end
+			img['class'] = 'normal-illustration' if img['class'].to_s.strip.empty?
+		end
+
+
 		# Process PRE tags
 		#	- Remove first line if it's entirely whitespace.
 		#	- If class =~ ditaa replace with a rendered diagram

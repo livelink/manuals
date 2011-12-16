@@ -132,6 +132,15 @@ textarea, pre, .cheatsheet, code, #chapter_editor, .url {
 	}
 }
 
+img.normal-illustration {
+	padding: 5px;
+	border: 1px solid #eee;
+	text-align: center;
+	box-shadow: 2px 2px 3px rgba(0,0,0,0.25);
+}
+.illustration-container {
+	text-align: center;
+}
 
 #chapter_editor {
 	height: 400px;
