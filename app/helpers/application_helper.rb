@@ -21,11 +21,14 @@ module ApplicationHelper
 		#	- If class =~ ditaa replace with a rendered diagram
 		#	  Else remove textile "niceness" which makes code unusable when copied/pasted
 		doc.css("pre").each do |pre|
-			if pre.inner_html =~ %r"^\s*\n"
-				pre.inner_html = pre.inner_html.sub(/^\s*\n/, '')
-			end
+			html = pre.inner_html
+
+			lines = html.split(/\r?\n/)
+			lines.shift while lines.first && lines.first.strip.empty?
+			html = lines.join("\n")
+
 			if pre['class'].to_s =~ /ditaa/
-				diag = pre.inner_html.gsub(/-/, '-').gsub(/&gt;/, '>').gsub(/&lt;/,'<')
+				diag = html.gsub(/-/, '-').gsub(/&gt;/, '>').gsub(/&lt;/,'<')
 				id = Digest::MD5.hexdigest(diag)
 				unless Rails.root.join("public/diagrams/#{id}.png").exist?
 					File.open(Rails.root.join("tmp/#{id}.txt").to_s, "w") { |fp| fp << diag }
@@ -33,7 +36,7 @@ module ApplicationHelper
 				end
 				pre.replace("<img src='/diagrams/#{id}.png'>")
 			else
-				pre.inner_html = pre.inner_html.gsub(/×/, "x").gsub(/[‘’]/, "'").gsub(/[“”]/, '"').gsub(/–/, '-')
+				pre.inner_html = html.gsub(/×/, "x").gsub(/[‘’]/, "'").gsub(/[“”]/, '"').gsub(/–/, '-')
 			end
 		end
 
@@ -62,7 +65,7 @@ module ApplicationHelper
 		html = ''
 		raw = doc.to_s.split(%r'(</?pre[^>]*>)')
 		raw.each_with_index do |bit, index|
-			if raw[index-1] == '<pre>'
+			if raw[index-1][0,4] == '<pre'
 				html << bit.gsub(/\n/, '&#x000A;')
 			else
 				html << bit
