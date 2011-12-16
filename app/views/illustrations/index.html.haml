@@ -1,0 +1,19 @@
+#content.container
+  .row
+    .eight.columns
+      %h1 Listing illustrations
+      
+      %UL.block-grid.mobile.four-up
+        - @illustrations.each do |illustration|
+          %LI.thumb-holder
+            .name= illustration.name
+            = link_to(image_tag(illustration.attachment.url(:thumb), :alt => illustration.alt), illustration)
+            %br
+            = link_to 'Show', illustration
+            |
+            = link_to 'Edit', edit_illustration_path(illustration)
+            |
+            = link_to 'Destroy', illustration, :confirm => 'Are you sure?', :method => :delete
+
+    .four.columns     
+      = link_to 'New Illustration', new_illustration_path, :class => 'nice rounded blue button'

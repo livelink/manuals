@@ -1,3 +1,7 @@
+
+supportDrag = () ->
+	((new XMLHttpRequest()).upload && window.File && window.FileList && window.FileReader && window.FormData)
+
 window.initChapterEditor = () ->
 	$("#chapter_editor").width(($("#chapter_content").width()-40)+"px")
 	textarea = $('textarea#chapter_content').hide()
@@ -121,6 +125,10 @@ window.initChapterEditor = () ->
 			replaceDiv.find("#needle-text").val(selectedText(env.editor)) unless sel.isEmpty()
 			replaceDiv.reveal().find("#needle-text").focus()
 
+	$(window).on 'click', '.image-list li', () ->
+		editor.insert "!"+$(this).data('url')+"("+$(this).data('alt')+")!\n"
+		$('a[href="#source"]').trigger('click')
+
 	$(window).on 'click', 'DL.tabs a', (e) ->
 		if $(this).attr('href') == '#preview'
 
@@ -135,4 +143,37 @@ window.initChapterEditor = () ->
 
 		e.preventDefault()
 
+	if supportDrag()
+		$("#chapter_editor").on 'dragover dragleave', (e) ->
+			e.stopPropagation()
+			e.preventDefault()
+			if e.type is "dragover"
+				$("#chapter_editor").addClass('hover')
+			else
+				$("#chapter_editor").removeClass('hover')
+
+		uploadFile = (file) ->
+			formdata = new FormData()
+			formdata.append("utf8", "\u2713")
+			formdata.append("authenticity_token", $('meta[name="csrf-token"]').attr('content'))
+			formdata.append('illustration[name]', file.name)
+			formdata.append('illustration[alt]', '')
+			formdata.append('illustration[attachment]', file)
+			$.ajax
+				type : 'POST'
+				url : '/illustrations.json'
+				processData : false
+				data : formdata
+				cache : false
+				contentType : false
+				accepts : 'application/json'
+				dataType : 'json'
+				success : (data) ->
+					editor.insert "!"+data.normal_url+"!\n"
+
+		jQuery.event.props.push("dataTransfer")
+		$("#chapter_editor").on 'drop', (e) ->
+			$("#chapter_editor").removeClass('hover')
+			files = e.dataTransfer.files
+			uploadFile(file) for file in files
 

@@ -107,7 +107,7 @@ body {
 	}
 }
 
-textarea, pre, .cheatsheet, code, #chapter_editor {
+textarea, pre, .cheatsheet, code, #chapter_editor, .url {
 	font-family: Inconsolata, Consolata, monospace;
 	font-size: 11pt;
 }
@@ -134,18 +134,24 @@ textarea, pre, .cheatsheet, code, #chapter_editor {
 
 
 #chapter_editor {
-	//width: 638px;
 	height: 400px;
 	position: relative;
 	.ace_scroller {
 		// Looks ugly...?
 		overflow-x: hidden;
 	}
+	&.hover {
+		outline: 6px solid #0f0;
+	}
+}
+.editorTab {
+	height: 400px;
+	overflow-x: hidden;
+	overflow-y: auto;
 }
 #chapter_content {
 	position: absolute;
 	right: -1000px;
-	//width: 400px;
 	width: 100%;
 }
 
@@ -179,6 +185,51 @@ TEXTAREA.max-width {
 	overflow-y: auto;
 }
 
+@mixin vert_bg($top_col, $bot_col) {
+	background-image: linear-gradient(top, $top_col 25%, $bot_col 100%);
+	background-image: -o-linear-gradient(top, $top_col 25%, $bot_col 100%);
+	background-image: -moz-linear-gradient(top, $top_col 25%, $bot_col 100%);
+	background-image: -webkit-linear-gradient(top, $top_col 25%, $bot_col 100%);
+	background-image: -ms-linear-gradient(top, $top_col 25%, $bot_col 100%);
+	background-image: -webkit-gradient(
+		linear,
+		left top,
+		left bottom,
+		color-stop(0.25, $top_col),
+		color-stop(1, $bot_col)
+	);
+}
+
+@mixin trans($property, $duration: 0.3s) {
+	-webkit-transition: $property $duration;
+	-moz-transition: $property $duration;
+	transition: $property $duration;
+}
+
+.image-list {
+	IMG {
+		vertical-align: top;
+		margin: 4px 10px;
+	}
+	LI {
+		margin-bottom: 10px;
+		max-height: 100px;
+		.image-info {
+			display: inline-block;
+			.title { font-weight: bold; }
+			max-width: 580px;
+		}
+		border-radius: 3px;
+		border: 1px solid #ccc;
+		cursor: pointer;
+        background-color: #ccc;
+		@include vert_bg(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.5));
+		@include trans(background-color);
+		&:hover {
+			background-color: #999;
+		}
+	}
+}
 
 .chapter-list {
 	&, .section-list {
@@ -228,7 +279,6 @@ TEXTAREA.max-width {
 		font-family: Inconsolata, Consolata, monospace;
 	}
 
-
 	LI {
 		margin-bottom: 0;
 	}
@@ -256,4 +306,21 @@ TEXTAREA.max-width {
 		vertical-align: sub;
 		line-height: 0;
 	}
+}
+
+.thumb-holder {
+	border: 1px solid #ccc;
+	padding: 10px;
+	max-width: 220px;
+	text-align: center;
+	border-radius: 3px;
+	box-shadow: 2px 2px 3px rgba(0,0,0,0.3);
+	height: 250px !important;
+	overflow: hidden;
+}
+.thumb-holder .name {
+	font-weight: bold;
+}
+.thumb-holder img {
+	margin: 10px 0px;
 }

@@ -1,0 +1,19 @@
+= form_for @illustration, :html => {:multipart => true, :class => 'nice'} do |f|
+  -if @illustration.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@illustration.errors.count, "error")} prohibited this illustration from being saved:"
+      %ul
+        - @illustration.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :name
+    = f.text_field :name, :class => 'input-text'
+  .field
+    = f.label :alt
+    = f.text_field :alt, :class => 'input-text'
+  .field
+    = f.label :attachment
+    = f.file_field :attachment
+  .actions
+    = f.submit 'Save', :class => 'nice rounded blue button'

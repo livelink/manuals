@@ -23,12 +23,23 @@
           %a.active(href="#source") Source
         %dd
           %a(href="#preview") Preview
+        %dd
+          %a(href="#image") Illustrations
       %ul.tabs-content.contained
         %li.active#sourceTab
           = f.text_area :content, :class => 'max-width', :rows => 30
           #chapter_editor
-        %li#previewTab
+        %li#previewTab.editorTab
           #previewPane
+        %li#imageTab.editorTab
+          #imageList
+            %ul.image-list
+              - for illustration in Illustration.all
+                %li.image{:id => illustration.id, :'data-url' => illustration.attachment.url(:normal), :'data-alt' => illustration.alt}
+                  = image_tag(illustration.attachment.url(:tiny))
+                  .image-info
+                    .title= illustration.name
+                    .url= illustration.attachment.url(:normal)
       %script
         :plain
           jQuery(window).load(initChapterEditor);

@@ -3,6 +3,7 @@ Manuals::Application.routes.draw do
   match '/auth/:provider/callback', :to => 'sessions#create'
   match '/auth/goodbye', :to => 'sessions#destroy'
 
+  resources :illustrations
   resources :manuals do
 	resources :chapters do
 		member do
