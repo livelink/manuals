@@ -120,6 +120,19 @@ textarea, pre, .cheatsheet, code, #chapter_editor {
 	height: 100%;
 }
 
+.blob {
+	float: left;
+	max-width: 50%;
+	min-width: 10%;
+
+	&.left-margin {
+		margin-left: 1em;
+		border-left: 1px solid #ccc;
+		padding-left: 1em;
+	}
+}
+
+
 #chapter_editor {
 	//width: 638px;
 	height: 400px;
@@ -131,7 +144,7 @@ textarea, pre, .cheatsheet, code, #chapter_editor {
 }
 #chapter_content {
 	position: absolute;
-	left: -1000px;
+	right: -1000px;
 	//width: 400px;
 	width: 100%;
 }

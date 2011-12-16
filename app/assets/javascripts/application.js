@@ -30,49 +30,4 @@ jQuery(function ($) {
 	});
 });
 
-function initChapterEditor() {
-	$("#chapter_editor").width(($("#chapter_content").width()-40)+"px");
-	var editor = window.aceEditor = ace.edit("chapter_editor");
-	var textarea = $('textarea#chapter_content').hide();
-	var TextileMode = require("ace/mode/textile").Mode;
-	var session = editor.getSession();
-	editor.setTheme("ace/theme/textmate");
-	console.log(editor); console.log(TextileMode);
-	session.setUseWrapMode(true);
-	session.setMode(new TextileMode());
-	session.setValue(textarea.val());
-	session.on('change', function(){ textarea.val(editor.getSession().getValue()); });
 
-	var canon = require('pilot/canon');
-	$.each([
-		{name: 'make-bold', key: 'B', left: '*', right: '*'},
-		{name: 'make-italic', key: 'I', left: '_', right: '_'},
-		{name: 'make-strikeout', key: 'D', left: '-', right: '-'},
-	], function (index, cmd) {
-		canon.addCommand({
-			name: cmd.name,
-			bindKey: {
-				win: 'Ctrl-'+cmd.key,
-				mac: 'Command-'+cmd.key,
-				sender: 'editor'
-			},
-			exec: function(env, args, request) {
-				editor.insert(cmd.left+session.doc.getTextRange(editor.getSelectionRange())+cmd.right);
-			}
-		})
-	});
-
-	$(window).on('click', 'DL.tabs a', function (e) {
-		if ($(this).attr('href') == '#preview') {
-			var url = location.pathname.replace(/(edit|new)$/, 'preview');
-			var pp = $("#previewPane");
-			pp.html("Loading preview...");
-			$.post(url, { 'data' : textarea.val() }, function (data) {
-				pp.html(data);
-			});
-		} else if ($(this).attr('href') == '#source') {
-			setTimeout(function () { editor.focus(); }, 0);
-		}
-		e.preventDefault();
-	});
-}
