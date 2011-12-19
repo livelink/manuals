@@ -1,0 +1,28 @@
+// Place all the styles related to the Welcome controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#main-content {
+	padding: 3em 1em 3em 1em;
+	background: #69b;
+	h1 {
+		font-weight: normal;
+		text-align: center;
+		margin: 0.3em 0em;
+		color: white;
+		text-shadow: 0px -1px 0px rgba(0,0,0,0.3);
+	}
+	.three-boxes {
+		.four.columns {
+			padding-top: 1em;
+			background: #7ac;
+		}
+		h2 {
+			font-weight: normal;
+			text-align: center;
+			font-size: 18pt;
+			color: #def;
+		}
+	}
+}
+

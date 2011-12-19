@@ -1,4 +1,5 @@
 Manuals::Application.routes.draw do
+
   get "sessions/create"
   match '/auth/:provider/callback', :to => 'sessions#create'
   match '/auth/goodbye', :to => 'sessions#destroy'
@@ -14,6 +15,7 @@ Manuals::Application.routes.draw do
 		end
 	end
   end
+  root :to => 'welcome#index'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
