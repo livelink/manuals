@@ -9,7 +9,7 @@
       %h2= @illustration.alt
       .image
         = image_tag @illustration.attachment.url(:normal), :class => 'image-view'
-      
+
       = link_to 'Edit', edit_illustration_path(@illustration)
       \|
       = link_to 'Back', illustrations_path

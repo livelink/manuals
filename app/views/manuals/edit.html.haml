@@ -1,19 +1,19 @@
 #head.container
-	.row
-		.twelve.columns
-			%h1 Editing Manual
+  .row
+    .twelve.columns
+      %h1 Editing Manual
 #content.container
-	.row
-		.six.columns
-			%h3 Manual Details
-			= render 'form'
-		.six.columns
-			%h3 Chapters
-			%ul.two-up.block-grid
-				- for chapter in @manual.chapters
-					%li{:id=>"chapter_#{chapter.id}"}
-						= chapter.title
-					%li
-						= link_to "Edit", edit_manual_chapter_path(@manual, chapter), :class => 'nice medium radius white button'
-			= link_to "Append Chapter", new_manual_chapter_path(@manual), :class => 'nice medium radius blue button'
+  .row
+    .six.columns
+      %h3 Manual Details
+      = render 'form'
+    .six.columns
+      %h3 Chapters
+      %ul.two-up.block-grid
+        - for chapter in @manual.chapters
+          %li{:id=>"chapter_#{chapter.id}"}
+            = chapter.title
+          %li
+            = link_to "Edit", edit_manual_chapter_path(@manual, chapter), :class => 'nice medium radius white button'
+      = link_to "Append Chapter", new_manual_chapter_path(@manual), :class => 'nice medium radius blue button'
 

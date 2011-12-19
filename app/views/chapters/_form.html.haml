@@ -12,12 +12,12 @@
           .field
             = f.label :title
             = f.text_field :title, :class => 'input-text large'
-    
+
         .three.columns
           .field
             = f.label :chapter_no
             = f.text_field :chapter_no, :type => 'number', :class => 'input-text small'
-    
+
       %dl.tabs.contained
         %dd
           %a.active(href="#source") Source
@@ -43,10 +43,10 @@
       %script
         :plain
           jQuery(window).load(initChapterEditor);
-    
+
       .actions
         = f.submit 'Save', :class => 'nice medium radius blue button'
   .four.columns
-    %h2 Quick Ref 
+    %h2 Quick Ref
     = textile_help
 

@@ -1,11 +1,11 @@
 #head.container
-	.row
-		.columns.twelve
-			%h1
-				New chapter for
-				= @manual.title
+  .row
+    .columns.twelve
+      %h1
+        New chapter for
+        = @manual.title
 #content.container
-	.row
-		.columns.twelve
-			= render 'form'
-			= link_to 'Back', manual_chapters_path(@manual)
+  .row
+    .columns.twelve
+      = render 'form'
+      = link_to 'Back', manual_chapters_path(@manual)
