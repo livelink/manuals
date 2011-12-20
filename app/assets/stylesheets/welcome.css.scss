@@ -64,7 +64,12 @@
 	border: 1px inset #69c;
 	font-size: 14pt;
 	width: 100%;
+	background: #def;
 	padding: 2px 1em;
+	&:focus {
+	  outline: none;
+	  background: white;
+	}
   }
   } 
 }
