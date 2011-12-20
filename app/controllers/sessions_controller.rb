@@ -3,11 +3,11 @@ class SessionsController < ApplicationController
     #@user = User.find_or_create_from_auth_hash(auth_hash)
     #self.current_user = @user
 	session['auth'] = auth_hash
-    redirect_to '/manuals'
+    redirect_to '/'
   end
   def destroy
     session['auth'] = nil
-	redirect_to '/manuals'
+	redirect_to '/'
   end
   protected
 

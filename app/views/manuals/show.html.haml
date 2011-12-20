@@ -3,8 +3,8 @@
     .ten.columns
       %h1= @manual.title
     .two.columns
-      = link_to 'Edit', edit_manual_path(@manual), :class => 'edit-link'
-      = link_to 'PDF', manual_path(@manual, :format => 'pdf'), :class => 'pdf-link'
+      = link_to 'Edit', edit_manual_path(@manual), :class => 'edit-link button-link'
+      = link_to 'PDF', manual_path(@manual, :format => 'pdf'), :class => 'pdf-link button-link'
 
 #content.container
   - if notice

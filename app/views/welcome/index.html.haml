@@ -1,12 +1,25 @@
 #main-content.container
   .row
     .twelve.columns
+      =image_tag("/icons/64px/white/bookmark.png", :align => 'center', :id => 'logo')
       %h1 Manuals Site
   .row.three-boxes
     .four.columns
-      %h2.howto How do I...?
+      %h2.howto
+        =image_tag("/icons/32px/white/light-bulb.png")
+        How do I...?
     .four.columns
-      %h2.manuals Manuals Index
+      %h2.manuals
+        =image_tag("/icons/32px/white/blueprint.png")
+        Manuals Index
+      %ul
+        - for manual in @manuals
+          %li= link_to manual.title, manual
     .four.columns
-      %h2.search Search
-
+      %h2.search
+        =image_tag("/icons/32px/white/search.png")
+        Search
+      %form
+        %input#q(type="search" name="q")
+:javascript
+  jQuery(function ($) { $(".three-boxes").equalHeights(true); })

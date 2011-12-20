@@ -64,14 +64,40 @@ body {
 }
 
 #head {
-	background: #def;
-	border-bottom: 1px solid #acf;
+  background: #69b;
+
+//	background: #def;
+	border-bottom: 1px solid #368;
 	padding-top: 1em;
 	h1 {
-		color: #014;
-		text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.8);
+//		color: #014;
+		color: white;
+		text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.3);
 		margin-top: 1em;
 	}
+  .button-link {
+	padding: 6px 12px 6px 32px;
+	border-radius: 24px;
+	background: #eee;
+	@include vert_bg(#eee, #ccc);
+	border-top: 1px solid #fff;
+	border-bottom: 1px solid #aaa;
+	background-repeat: no-repeat;
+	background-position: 10px 50%;
+	color: #333;
+	font-weight: bold;
+	text-shadow: 0px 1px 0 rgba(255,255,255,0.7);
+	box-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+  }
+  .button-link:hover {
+	background-color: #fff;
+  }
+  .pdf-link {
+	background-image: url(/icons/16px/print.png);
+  }
+  .edit-link {
+	background-image: url(/icons/16px/page-edit.png);
+  }
 }
 
 #content {
@@ -265,12 +291,12 @@ TEXTAREA.max-width {
 		
 	}
 	blockquote.note {
-		margin-left: 2em;
+		margin: 0 2em 1em;
 		border-left: 2px solid #9cf;
 		background-color: #def;
 		padding: 1em 1em 1em 48px;
-		background-image: url(/images/information.png);
-		background-position: 16px 50%;
+		background-image: url(/icons/32px/white/info.png);
+		background-position: 8px 50%;
 		background-repeat: no-repeat;
 	}
 	blockquote p:last-child {
@@ -299,10 +325,10 @@ TEXTAREA.max-width {
 		line-height: 24px;
 	}
 	LI.dir {
-		background-image: url(/images/folder.png);
+		background-image: url(/icons/16px/folder.png);
 	}
 	LI.file {
-		background-image: url(/images/page_white.png);
+		background-image: url(/icons/16px/page.png);
 	}	
 
 	SUP {

@@ -1,28 +1,71 @@
 // Place all the styles related to the Welcome controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-
+@mixin full_vert_bg($top_col, $bot_col) {
+	background-image: linear-gradient(top, $top_col 0%, $bot_col 100%);
+	background-image: -o-linear-gradient(top, $top_col 0%, $bot_col 100%);
+	background-image: -moz-linear-gradient(top, $top_col 0%, $bot_col 100%);
+	background-image: -webkit-linear-gradient(top, $top_col 0%, $bot_col 100%);
+	background-image: -ms-linear-gradient(top, $top_col 0%, $bot_col 100%);
+	background-image: -webkit-gradient(
+		linear,
+		left top,
+		left bottom,
+		color-stop(0, $top_col),
+		color-stop(1, $bot_col)
+	);
+}
 #main-content {
-	padding: 3em 1em 3em 1em;
-	background: #69b;
-	h1 {
-		font-weight: normal;
-		text-align: center;
-		margin: 0.3em 0em;
-		color: white;
-		text-shadow: 0px -1px 0px rgba(0,0,0,0.3);
+  padding: 3em 1em 3em 1em;
+  background: #69b;
+  @include full_vert_bg(#69b, #479);
+  text-align: center;
+  img#logo {
+	margin: 20px 0 0 0; 
+  }
+  h1 {
+    font-weight: normal;
+    text-align: center;
+	font-size: 54pt;
+    margin: 0 0 32px 0;
+    color: #fff;
+    text-shadow: 0px -1px 0px rgba(0,0,0,0.3);
+  }
+  .three-boxes {
+	text-align: left;
+    .four.columns {
+	  border-radius: 1em;
+      padding-top: 1em;
+      background: #7ac;
+    }
+    h2 {
+      font-weight: normal;
+      text-align: left;
+	  padding-left: 20px;
+      font-size: 18pt;
+      color: #fff;
+	  IMG { vertical-align: middle;}
+    }
+	UL {
+	  margin: 5px 20px 20px 20px;
+	  list-style: circle inside;
 	}
-	.three-boxes {
-		.four.columns {
-			padding-top: 1em;
-			background: #7ac;
-		}
-		h2 {
-			font-weight: normal;
-			text-align: center;
-			font-size: 18pt;
-			color: #def;
-		}
-	}
+    LI {
+      color: white;
+      font-weight: bold;
+	  A { color: inherit; }
+    }
+  }
+  
+  FORM { 
+	margin: 5px 20px 20px;
+  #q {
+	border-radius: 1em;
+	border: 1px inset #69c;
+	font-size: 14pt;
+	width: 100%;
+	padding: 2px 1em;
+  }
+  } 
 }
 
