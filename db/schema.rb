@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111213163719) do
+ActiveRecord::Schema.define(:version => 20111216172129) do
 
   create_table "chapters", :force => true do |t|
     t.integer  "manual_id"
@@ -22,6 +22,17 @@ ActiveRecord::Schema.define(:version => 20111213163719) do
   end
 
   add_index "chapters", ["manual_id"], :name => "index_chapters_on_manual_id"
+
+  create_table "illustrations", :force => true do |t|
+    t.string   "name"
+    t.string   "alt"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "attachment_file_name"
+    t.string   "attachment_content_type"
+    t.integer  "attachment_file_size"
+    t.datetime "attachment_updated_at"
+  end
 
   create_table "manuals", :force => true do |t|
     t.string   "slug"
