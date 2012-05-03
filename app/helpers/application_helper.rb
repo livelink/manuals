@@ -1,16 +1,21 @@
 module ApplicationHelper
+	def current_user_email
+		session['auth'].try(:[], 'info').try(:[], 'email')
+	end
 	def logged_in?
-		session['auth'].try(:[], 'info').try(:[], 'email').to_s =~ /@livelinktechnology[.]net$/
+		ManualAuth.email_ok_for?(current_user_email, ManualAuth::VIEW) or
+			ManualAuth.email_ok_for?(current_user_email, ManualAuth::EDIT) or
+			ManualAuth.email_ok_for?(current_user_email, ManualAuth::ADMIN)
 	end
 	def can_edit?
-		logged_in?
+		ManualAuth.email_ok_for?(current_user_email, ManualAuth::EDIT) or
+			ManualAuth.email_ok_for?(current_user_email, ManualAuth::ADMIN)
 	end
 	def can_create?
 		can_edit?
 	end
 	def can_delete?
-		logged_in? and
-			%w[g.youngs@livelinktechnology.net].include? session['auth'].try(:[], 'info').try(:[], 'email')
+		ManualAuth.email_ok_for?(current_user_email, ManualAuth::ADMIN)
 	end
 	def textile str
 		doc = Nokogiri.HTML(RedCloth.new(str).to_html)

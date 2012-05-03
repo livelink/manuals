@@ -1,4 +1,5 @@
 class ChaptersController < ApplicationController
+  before_filter :need_view!
   # GET /manual/:manual_id/chapters
   # GET /chapters.json
   def index
@@ -42,6 +43,7 @@ class ChaptersController < ApplicationController
 
   # GET /chapters/1/edit
   def edit
+	need_edit!
 	@manual = Manual.find(params[:manual_id])
     @chapter = @manual.chapters.find(params[:id])
   end
@@ -49,6 +51,7 @@ class ChaptersController < ApplicationController
   # POST /chapters
   # POST /chapters.json
   def create
+	need_edit!
 	@manual = Manual.find(params[:manual_id])
     @chapter = @manual.chapters.new(params[:chapter])
 
@@ -66,6 +69,7 @@ class ChaptersController < ApplicationController
   # PUT /chapters/1
   # PUT /chapters/1.json
   def update
+	need_edit!
 	@manual = Manual.find(params[:manual_id])
     @chapter = @manual.chapters.find(params[:id])
 
@@ -86,6 +90,7 @@ class ChaptersController < ApplicationController
   # DELETE /chapters/1
   # DELETE /chapters/1.json
   def destroy
+	need_admin!
 	@manual = Manual.find(params[:manual_id])
     @chapter = @manual.chapters.find(params[:id])
     @chapter.destroy

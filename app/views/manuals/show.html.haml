@@ -3,7 +3,7 @@
     .ten.columns
       %h1= @manual.title
     .two.columns
-      = link_to 'Edit', edit_manual_path(@manual), :class => 'edit-link button-link'
+      = link_to 'Edit', edit_manual_path(@manual), :class => 'edit-link button-link' if can_edit?
       = link_to 'PDF', manual_path(@manual, :format => 'pdf'), :class => 'pdf-link button-link'
 
 #content.container
@@ -26,7 +26,7 @@
         %h2{:id => chapter.chapter_no }= "#{chapter.chapter_no}. #{chapter.title}"
         = textile(chapter.content)
         .edit-link
-          = link_to "[Edit]", edit_manual_chapter_path(@manual, chapter), :class => 'edit-link'
+          = link_to "[Edit]", edit_manual_chapter_path(@manual, chapter), :class => 'edit-link' if can_edit?
 
     .four.columns
       .contents-list

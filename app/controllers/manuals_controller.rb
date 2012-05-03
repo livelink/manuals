@@ -2,6 +2,7 @@ require 'redcloth'
 require 'nokogiri'
 
 class ManualsController < ApplicationController
+  before_filter :need_view!
   # GET /manuals
   # GET /manuals.json
   def index
@@ -83,12 +84,14 @@ EOS
 
   # GET /manuals/1/edit
   def edit
+    need_edit!
     @manual = Manual.find(params[:id])
   end
 
   # POST /manuals
   # POST /manuals.json
   def create
+    need_edit!
     @manual = Manual.new(params[:manual])
 
     respond_to do |format|
@@ -105,6 +108,7 @@ EOS
   # PUT /manuals/1
   # PUT /manuals/1.json
   def update
+    need_edit!
     @manual = Manual.find(params[:id])
 
     respond_to do |format|
@@ -121,6 +125,8 @@ EOS
   # DELETE /manuals/1
   # DELETE /manuals/1.json
   def destroy
+    need_admin!
+
     @manual = Manual.find(params[:id])
     @manual.destroy
 
