@@ -65,6 +65,7 @@ GEM
       railties (~> 3.0)
     hashie (1.2.0)
     hike (1.2.1)
+    httpclient (2.2.3)
     i18n (0.6.0)
     jquery-rails (1.0.19)
       railties (~> 3.0)
@@ -174,6 +175,7 @@ DEPENDENCIES
   annotate!
   coffee-rails (~> 3.1.1)
   haml-rails
+  httpclient
   jquery-rails
   json
   mysql2

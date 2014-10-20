@@ -15,6 +15,7 @@
 	
 	<!-- Set the viewport width to device width for mobile -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 	
 	<title><%= content_for?(:title) ? yield(:title) : "LiveLink Manuals" %></title>
   
@@ -52,7 +53,7 @@
 			<div id="logout">
 				<div class="row">
 				<div class="four columns">
-				<a href="http://www.gravatar.com/<%= hash %>"><img src="http://www.gravatar.com/avatar/<%= hash %>?s=80&r=g" width="80" height="80" border="0"></a>
+				<a href="http://www.gravatar.com/<%= hash %>"><img src="/gravatar/<%= hash %>" width="80" height="80" border="0"></a>
 				</div>
 				<div class="eight columns">
 				<div class="auth-info-name"><%= session['auth']['info']['name'] %></div>

@@ -2,6 +2,12 @@ require'manual_auth'
 
 class ApplicationController < ActionController::Base
   protect_from_forgery
+  def gravatar
+	  c = HTTPClient.new
+	  res = c.get("http://www.gravatar.com/avatar/#{params[:hash]}?s=80&r=g")
+	  headers['Content-Type'] = res.content_type
+	  render :text => res.content, :type => res.content_type, :layout => false
+  end
 protected
   def current_user_email
     session['auth'].try(:[], 'info').try(:[], 'email')

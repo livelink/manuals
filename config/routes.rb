@@ -3,6 +3,7 @@ Manuals::Application.routes.draw do
   get "sessions/create"
   match '/auth/:provider/callback', :to => 'sessions#create'
   match '/auth/goodbye', :to => 'sessions#destroy'
+  match '/gravatar/:hash', :to => 'application#gravatar'
 
   resources :illustrations
   resources :manuals do
